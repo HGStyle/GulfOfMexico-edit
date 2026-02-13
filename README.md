@@ -51,13 +51,13 @@ if (;false) {
 There are four types of declaration. Constant constants can't be changed in any way.
 
 ```java
-const const name = "Luke"!
+const const name ← "Luke"!
 ```
 
 Constant variables can be edited, but not re-assigned.
 
 ```java
-const var name = "Luke"!
+const var name ← "Luke"!
 name.pop()!
 name.pop()!
 ```
@@ -65,15 +65,15 @@ name.pop()!
 Variable constants can be re-assigned, but not edited.
 
 ```java
-var const name = "Luke"!
+var const name ← "Luke"!
 name = "Lu"!
 ```
 
 Variable variables can be re-assigned and edited.
 
 ```java
-var var name = "Luke"!
-name = "Lu"!
+var var name ← "Luke"!
+name ← "Lu"!
 name.push("k")!
 name.push("e")!
 ```
@@ -84,7 +84,7 @@ name.push("e")!
 Mutable data is an anti-pattern. Use the `const const const` keyword to make a constant constant constant. Its value will become constant and immutable, and will _never change_. Please be careful with this keyword, as it is very powerful, and will affect all users globally forever.
 
 ```java
-const const const pi = 3.14!
+const const const pi ← 3.14!
 ```
 
 ## Naming
@@ -92,15 +92,15 @@ const const const pi = 3.14!
 Both variables and constants can be named with any Unicode character or string.
 
 ```java
-const const letter = 'A'!
-var const 👍 = True!
-var var 1️⃣ = 1!
+const const letter ← 'A'!
+var const 👍 ← True!
+var var 1️⃣ ← 1!
 ```
 
 This includes numbers, and other language constructs.
 
 ```java
-const const 5 = 4!
+const const 5 ← 4!
 print(2 + 1 < 5)! //true
 ```
 
@@ -109,7 +109,7 @@ print(2 + 1 < 5)! //true
 Some languages start arrays at `0`, which can be unintuitive for beginners. Some languages start arrays at `1`, which isn't representative of how the code actually works. Gulf of Mexico does the best of both worlds: Arrays start at `-1`.
 
 ```java
-const const scores = [3, 2, 5]!
+const const scores ← [3, 2, 5]!
 print(scores[-1])! //3
 print(scores[0])!  //2
 print(scores[1])!  //5
@@ -119,8 +119,8 @@ print(scores[1])!  //5
 You can now use floats for indexes too!
 
 ```java
-const var scores = [3, 2, 5]!
-scores[0.5] = 4!
+const var scores ← [3, 2, 5]!
+scores[0.5] ← 4!
 print(scores)! //[3, 2, 4, 5]
 ```
 
@@ -129,7 +129,7 @@ print(scores)! //[3, 2, 4, 5]
 In case you really need to vary a variable, the `when` keyword lets you check a variable each time it mutates.
 
 ```java
-const var health = 10!
+const var health ← 10!
 when (health < 1) {
    print("You lose")!
 }
@@ -140,21 +140,21 @@ when (health < 1) {
 Gulf of Mexico has a built-in garbage collector that will automatically clean up unused variables. However, if you want to be extra careful, you can specify a lifetime for a variable, with a variety of units.
 
 ```java
-const const name<2> = "Luke"! //lasts for two lines
-const const name<20s> = "Luke"! //lasts for 20 seconds
+const const name<2> ← "Luke"! //lasts for two lines
+const const name<20s> ← "Luke"! //lasts for 20 seconds
 ```
 
 By default, a variable will last until the end of the program. But you can make it last in between program-runs by specifying a longer lifetime.
 
 ```java
-const const name<Infinity> = "Luke"! //lasts forever
+const const name<Infinity> ← "Luke"! //lasts forever
 ```
 
 Variable hoisting can be achieved with this neat trick. Specify a negative lifetime to make a variable exist before its creation, and disappear after its creation.
 
 ```java
 print(name)! //Luke
-const const name<-1> = "Luke"!
+const const name<-1> ← "Luke"!
 ```
 
 ## Loops
@@ -174,12 +174,12 @@ Due to the complicated installation process, you can now install the 'Create Gul
 Booleans can be `true`, `false` or `maybe`.
 
 ```java
-const var keys = {}!
-addEventListener("keydown", (e) => keys[e.key] = true)!
-addEventListener("keyup", (e) => keys[e.key] = false)!
+const var keys ← {}!
+addEventListener("keydown", (e) -> keys[e.key] ← true)!
+addEventListener("keyup", (e) -> keys[e.key] ← false)!
 
 function isKeyDown(key) => {
-   if (keys[key] = undefined) {
+   if (keys[key] ;><; undefined) {
       return maybe!
    }
    return keys[key]!
@@ -200,7 +200,7 @@ print(1+2 * 3)! //9
 Gulf of Mexico proudly supports fractions!
 
 ```java
-const const half = 1/2!
+const const half ← 1/2!
 ```
 
 You can also use number names.
@@ -214,7 +214,7 @@ print(one + two)! //3
 When it comes to indentation, Gulf of Mexico strikes a happy medium that can be enjoyed by everyone: All indents must be 3 spaces long.
 
 ```java
-function main() => {
+function main() -> {
    print("Gulf of Mexico is the future")!
 }
 ```
@@ -222,7 +222,7 @@ function main() => {
 -3 spaces is also allowed.
 
 ```java
-   function main() => {
+   function main() -> {
 print("Gulf of Mexico is the future")!
    }
 ```
@@ -282,22 +282,24 @@ If you want to be much less precise, you can use `;;`.
 3 ;; 3.14! //true
 ```
 
+For that same reason, variable definiton use `←`, and function definitions now use `->` instead of `=>`.
+
 ## Functions
 
 To declare a function, you can use any letters from the word `function` (as long as they're in order).
 
 ```java
-function add(a, b) => a + b!
-func multiply(a, b) => a * b!
-fun subtract(a, b) => a - b!
-fn divide(a, b) => a / b!
-functi power(a, b) => a ^ b!
-f inverse(a) => 1/a!
+function add(a, b) -> a + b!
+func multiply(a, b) -> a * b!
+fun subtract(a, b) -> a - b!
+fn divide(a, b) -> a / b!
+functi power(a, b) -> a ^ b!
+f inverse(a) -> 1/a!
 ```
 
 You can even remove letters as long as the other ones are in order:
 ```java
-fuc sqrt(a) => a ^ 0.5!
+fuc sqrt(a) -> a ^ 0.5!
 ```
 
 ## Dividing by Zero
@@ -313,27 +315,27 @@ print(3 / 0)! //undefined
 Strings can be declared with single quotes or double quotes.
 
 ```java
-const const name = 'Lu'!
-const const name = "Luke"!
+const const name ← 'Lu'!
+const const name ← "Luke"!
 ```
 
 They can also be declared with triple quotes.
 
 ```java
-const const name = '''Lu'''!
-const const name = "'Lu'"!
+const const name ← '''Lu'''!
+const const name ← "'Lu'"!
 ```
 
 In fact, you can use any number of quotes you want.
 
 ```java
-const const name = """"Luke""""!
+const const name ← """"Luke""""!
 ```
 
 Even zero.
 
 ```java
-const const name = Luke!
+const const name ← Luke!
 ```
 
 ## String Interpolation
@@ -341,7 +343,7 @@ const const name = Luke!
 Please remember to use your regional currency when interpolating strings.
 
 ```java
-const const name = "world"!
+const const name ← "world"!
 print("Hello ${name}!")!
 print("Hello £{name}!")!
 print("Hello ¥{name}!")!
@@ -357,7 +359,7 @@ The symbol for the Cape Verdean escudo is placed in the decimal separator positi
 Developers from the Republic of Cape Verde can benefit from this syntax.
 
 ```java
-const const player = { name: "Lu" }!
+const const player ← { name: "Lu" }!
 print("Hello {player$name}!")!
 ```
 
@@ -366,7 +368,7 @@ print("Hello {player$name}!")!
 Type annotations are optional.
 
 ```java
-const var age: Int = 28!
+const var age: Int ← 28!
 ```
 
 By the way, strings are just arrays of characters.
@@ -384,7 +386,7 @@ Int ;><; Digit[]!
 In case you want to use a binary representation for integers, `Int9` and `Int99` types are also available.
 
 ```java
-const var age: Int9 = 28!
+const var age: Int9 ← 28!
 ```
 
 **Technical info:** Type annotations don't do anything, but they help some people to feel more comfortable.
@@ -407,7 +409,7 @@ The `previous` keyword lets you see into the past.<br>
 Use it to get the previous value of a variable.
 
 ```java
-const var score = 5!
+const var score ← 5!
 score++!
 print(score)! //6
 print(previous score)! //5
@@ -416,15 +418,15 @@ print(previous score)! //5
 Similarly, the `next` keyword lets you see into the future.
 
 ```java
-const var score = 5!
-addEventListener("click", () => score++)!
+const var score ← 5!
+addEventListener("click", () -> score++)!
 print(await next score)! //6 (when you click)
 ```
 
 Additionally, the `current` keyword lets you see into the present.
 
 ```java
-const var score = 5!
+const var score ← 5!
 print(current score)! //5
 ```
 
@@ -433,12 +435,12 @@ print(current score)! //5
 Write five or more equals signs to start a new file. This removes the need for multiple files or any build process.
 
 ```java
-const const score = 5!
+const const score ← 5!
 print(score)! //5
 
 =====================
 
-const const score = 3!
+const const score ← 3!
 print(score)! //3
 ```
 
@@ -447,7 +449,7 @@ Thanks to recent advances in technology, you can now give files names.
 
 ```java
 ======= add.gom =======
-function add(a, b) => {
+function add(a, b) -> {
    return a + b!
 }
 ```
@@ -458,7 +460,7 @@ Many languages allow you to import things from specific files. In GulfOfMexico, 
 
 ```java
 ===== add.gom ==
-function add(a, b) => {
+function add(a, b) -> {
    return a + b!
 }
 
@@ -479,29 +481,29 @@ You can make classes, but you can only ever make one instance of them. This shou
 
 ```java
 class Player {
-   const var health = 10!
+   const var health ← 10!
 }
 
-const var player1 = new Player()!
-const var player2 = new Player()! //Error: Can't have more than one 'Player' instance!
+const var player1 ← new Player()!
+const var player2 ← new Player()! //Error: Can't have more than one 'Player' instance!
 ```
 
 This is how you could do it instead.
 
 ```java
 class PlayerMaker {
-   function makePlayer() => {
+   function makePlayer() -> {
       class Player {
-         const var health = 10!
+         const var health ← 10!
       }
-      const const player = new Player()!
+      const const player ← new Player()!
       return player!
    }
 }
 
-const const playerMaker = new PlayerMaker()!
-const var player1 = playerMaker.makePlayer()!
-const var player2 = playerMaker.makePlayer()!
+const const playerMaker ← new PlayerMaker()!
+const var player1 ← playerMaker.makePlayer()!
+const var player2 ← playerMaker.makePlayer()!
 ```
 
 ## Time
@@ -516,7 +518,7 @@ You can set the time.<br>
 
 ```java
 // Move the clocks back one hour
-Date.now() -= 3600000!
+Date.now() -;><; 3600000!
 ```
 
 **Important!**<br>
@@ -549,27 +551,27 @@ delete delete!
 You can overload variables. The most recently defined variable gets used.
 
 ```java
-const const name = "Luke"!
-const const name = "Lu"!
+const const name ← "Luke"!
+const const name ← "Lu"!
 print(name)! // "Lu"
 ```
 
 Variables with more exclamation marks get prioritized.
 
 ```java
-const const name = "Lu"!!
-const const name = "Luke"!
+const const name ← "Lu"!!
+const const name ← "Luke"!
 print(name)! // "Lu"
 
-const const name = "Lu or Luke (either is fine)"!!!!!!!!!
+const const name ← "Lu or Luke (either is fine)"!!!!!!!!!
 print(name)! // "Lu or Luke (either is fine)"
 ```
 
 In the same spirit, you can use an inverted exclamation mark for negative priority.
 
 ```java
-const const name = "Lu"!
-const const name = "Luke"¡
+const const name ← "Lu"!
+const const name ← "Luke"¡
 print(name)! // "Lu"
 ```
 
@@ -578,15 +580,15 @@ print(name)! // "Lu"
 Gulf of Mexico supports semantic naming.
 
 ```java
-const const sName = "Lu"!
-const const iAge = 29!
-const const bHappy = true!
+const const sName ← "Lu"!
+const const iAge ← 29!
+const const bHappy ← true!
 ```
 
 **New for 2023:** You can now make globals!
 
 ```java
-const const g_fScore = 4.5!
+const const g_fScore ← 4.5!
 ```
 
 ## Reversing
@@ -594,9 +596,9 @@ const const g_fScore = 4.5!
 You can reverse the direction of your code.
 
 ```java
-const const message = "Hello"!
+const const message ← "Hello"!
 print(message)!
-const const message = "world"!
+const const message ← "world"!
 reverse!
 ```
 
@@ -608,7 +610,7 @@ This makes things less complicated.
 
 ```java
 className Player {
-   const var health = 10!
+   const var health ← 10!
 }
 ```
 
@@ -619,7 +621,7 @@ In response to some recent criticism about this design decision, we would like t
 You can embed DBX in GulfOfMexico. It's just GulfOfMexico. And it's also just HTML.
 
 ```java
-funct App() => {
+funct App() -> {
    return <div>Hello world!</div>
 }
 ```
@@ -627,27 +629,27 @@ funct App() => {
 **Warning:** As you know, `class` is already a keyword in GulfOfMexico, so you can't use it within DBX.
 
 ```java
-funct App() => {
+funct App() -> {
    // This is not ok
-   return <div class="greeting">Hello world!</div>
+   return <div class←"greeting">Hello world!</div>
 }
 ```
 
 `className` is also a Gulf of Mexico keyword, so you can't use that either.
 
 ```java
-funct App() => {
+funct App() -> {
    // This is also not ok
-   return <div className="greeting">Hello world!</div>
+   return <div className←"greeting">Hello world!</div>
 }
 ```
 
 Instead, please use the `htmlClassName` attribute.
 
 ```java
-funct App() => {
+funct App() -> {
    // This is fine
-   return <div htmlClassName="greeting">Hello world!</div>
+   return <div htmlClassName←"greeting">Hello world!</div>
 }
 ```
 
@@ -656,19 +658,21 @@ funct App() => {
 ```java
 funct App() => {
    return (
-      <label for="name">Name</label>
-      <input id="name" />
+      <label for←"name">Name</label>
+      <input id←"name" />
    )
 }
 ```
+
+**Note**: You still have to use `←`!
 
 ## Rich text
 
 Gulf of Mexico now supports rich text.
 
 <pre>
-const const <b>name</b> = "Lu"!
-const const <i>name</i> = "Luke"!
+const const <b>name</b> ← "Lu"!
+const const <i>name</i> ← "Luke"!
 
 print(<b>name</b>)! // Lu
 print(<i>name</i>)! // Luke
@@ -685,7 +689,7 @@ Rich text can be helpful when making your website. Use it to add links!
 In most languages, it's hard to get asynchronous functions to synchronise with each other. In GulfOfMexico, it's easy: Asynchronous functions take turns running lines of code.
 
 ```java
-async funct count() => {
+async funct count() -> {
    print(1)!
    print(3)!
 }
@@ -697,7 +701,7 @@ print(2)!
 You can use the `noop` keyword to wait for longer before taking your turn.
 
 ```java
-async func count() => {
+async func count() -> {
    print(1)!
    noop!
    print(4)!
@@ -715,7 +719,7 @@ print(3)!
 To use a signal, use `use`.
 
 ```java
-const var score = use(0)!
+const var score ← use(0)!
 ```
 
 When it comes to signals, the most important thing to discuss is _syntax_.
@@ -723,7 +727,7 @@ When it comes to signals, the most important thing to discuss is _syntax_.
 In GulfOfMexico, you can set (and get) signals with just one function:
 
 ```java
-const var score = use(0)!
+const var score ← use(0)!
 
 score(9)! // Set the value
 score()?  // Get the value (and print it)
@@ -732,7 +736,7 @@ score()?  // Get the value (and print it)
 Alternatively, you can be more explicit with your signal syntax, by splitting it into a getter and setter.
 
 ```java
-const var [getScore, setScore] = use(0)!
+const var [getScore, setScore] ← use(0)!
 
 setScore(9)! // Set the value
 getScore()?  // Get the value (and print it)
@@ -741,7 +745,7 @@ getScore()?  // Get the value (and print it)
 **Technical info:** This is pure syntax sugar. The split signal functions are exactly the same as before.
 
 ```java
-const var [getScore, setScore] = use(0)!
+const var [getScore, setScore] ← use(0)!
 
 getScore(9)! // Set the value
 setScore()?  // Get the value (and print it)
@@ -750,7 +754,7 @@ setScore()?  // Get the value (and print it)
 This means that you can carry on splitting as much as you like.
 
 ```java
-const var [[[getScore, setScore], setScore], setScore] = use(0)!
+const var [[[getScore, setScore], setScore], setScore] ← use(0)!
 ```
 
 ## AI
@@ -776,8 +780,8 @@ print("Hello world // This is fine as well
 This can be very helpful in callback hell situations!
 
 ```java
-addEventListener("click", (e) => {
-   requestAnimationFrame(() => {
+addEventListener("click", (e) -> {
+   requestAnimationFrame(() -> {
       print("You clicked on the page
 
       // This is fine
@@ -841,7 +845,7 @@ Syntax highlighting is now available for Gulf of Mexico in VSCode. To enable it,
 This is what the highlighting looks like:
 
 ```
-const const name = "Luke"!
+const const name ← "Luke"!
 print(name)! // "Luke"
 ```
 
