@@ -101,7 +101,7 @@ This includes numbers, and other language constructs.
 
 ```java
 const const 5 = 4!
-print(2 + 2 === 5)! //true
+print(2 + 1 < 5)! //true
 ```
 
 ## Arrays
@@ -130,7 +130,7 @@ In case you really need to vary a variable, the `when` keyword lets you check a 
 
 ```java
 const var health = 10!
-when (health = 0) {
+when (health < 1) {
    print("You lose")!
 }
 ```
@@ -227,35 +227,59 @@ print("Gulf of Mexico is the future")!
    }
 ```
 
+## Logical operations
+
+Most programming languages use `&&` and `\|\|`, or `and` and `or`.
+GulfOfMexico instead simply uses `&` and `\|`.
+
+```java
+print(true & false)!  //false
+print(false | maybe)!  //maybe
+print(true & maybe)! //maybe
+```
+
+Note that if you wanted to use the bitwise or or bitwise and operations, you'll need to use `&&` and `\|\|`.
+
+```java
+print(5 || 2)! //7
+print(6 && 5)! //4
+```
+
 ## Equality
 
-JavaScript lets you do different levels of comparison. `==` for loose comparison, and `===` for a more precise check. Gulf of Mexico takes this to another level.
+To better reflect how real life works, there are no sign for testing equality in GulfOfMexico.
 
-You can use `==` to do a loose check.
-
-```java
-3.14 == "3.14"! //true
-```
-
-You can use `===` to do a more precise check.
+However, you may bypass this restriction by testing whether a variable is not greater and not less than what you're comparing it to.
 
 ```java
-3.14 === "3.14"! //false
+(;3.14<3.14) & (;3.14>3.14) // true
 ```
 
-You can use `====` to be EVEN MORE precise!
+However, you can do this easily with the new `;><;` keyword.
+
+```java
+3.14 ;><; "3.14"! //true
+```
+
+You can use `;><;` to do a more precise check.
+
+```java
+3.14 ;><; "3.14"! //false
+```
+
+You can use `;>;<;` to be EVEN MORE precise!
 
 ```java
 const const pi = 3.14!
-print(pi ==== pi)! //true
-print(3.14 ==== 3.14)! //true
-print(3.14 ==== pi)! //false
+print(pi ;>;<; pi)! //true
+print(3.14 ;>;<; 3.14)! //true
+print(3.14 ;>;<; pi)! //false
 ```
 
-If you want to be much less precise, you can use `=`.
+If you want to be much less precise, you can use `;;`.
 
 ```java
-3 = 3.14! //true
+3 ;; 3.14! //true
 ```
 
 ## Functions
@@ -343,13 +367,13 @@ const var age: Int = 28!
 By the way, strings are just arrays of characters.
 
 ```java
-String == Char[]!
+String ;><; Char[]!
 ```
 
 Similarly, integers are just arrays of digits.
 
 ```java
-Int == Digit[]!
+Int ;><; Digit[]!
 ```
 
 In case you want to use a binary representation for integers, `Int9` and `Int99` types are also available.
