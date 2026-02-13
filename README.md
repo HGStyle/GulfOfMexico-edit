@@ -284,7 +284,7 @@ If you want to be much less precise, you can use `;;`.
 
 ## Functions
 
-To declare a function, you can use any letters from the word `function` (as long as they're in order):
+To declare a function, you can use any letters from the word `function` (as long as they're in order).
 
 ```java
 function add(a, b) => a + b!
@@ -293,6 +293,11 @@ fun subtract(a, b) => a - b!
 fn divide(a, b) => a / b!
 functi power(a, b) => a ^ b!
 f inverse(a) => 1/a!
+```
+
+You can even remove letters as long as the other ones are in order:
+```java
+fuc sqrt(a) => a ^ 0.5!
 ```
 
 ## Dividing by Zero
